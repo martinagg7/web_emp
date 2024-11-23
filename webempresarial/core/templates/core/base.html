@@ -93,6 +93,17 @@
             {% endif %}
         </p>
         <div class="container">
+            <p class="m-0">
+                {% load pages_extras %}
+                {% get_page_list as page_list %}
+                {% for page in page_list %}
+                    <a href="{% url 'page' page.id %}" class="link">{{ page.title }}</a>
+                    {% if not forloop.last %}·{% endif %}
+                {% endfor %}
+            </p>
+            <p class="m-0">© La Caffettiera 2018</p>
+        </div>
+        <div class="container">
             <p class="m-0">© La Caffettiera 2018</p>
         </div>
     </footer>
