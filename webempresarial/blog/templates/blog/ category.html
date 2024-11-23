@@ -1,0 +1,43 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Categoría: {{ category.name }}{% endblock %}
+
+{% block content %}
+<h1 class="my-5">Posts en la categoría "{{ category.name }}"</h1>
+
+{% for post in category.posts.all %}
+<section class="page-section cta">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-9 mx-auto">
+        <div class="cta-inner text-center rounded">
+          <h2 class="section-heading mb-5">
+            <span class="section-heading-upper">
+              {{ post.published|date:"d/m/Y" }}
+            </span>
+            <span class="section-heading-lower">
+              {{ post.title }}
+            </span>
+          </h2>
+          {% if post.image %}
+          <p class="mb-0">
+            <img class="mx-auto d-flex img-fluid mb-3 mb-lg-0" src="{{ post.image.url }}" alt="{{ post.title }}">
+          </p>
+          {% endif %}
+          <p class="mb-0">
+            {{ post.content|truncatewords:50 }}
+          </p>
+          <p class="mb-0">
+            <em><b>{{ post.author }}</b></em>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<hr>
+{% empty %}
+<p>No hay posts en esta categoría.</p>
+{% endfor %}
+{% endblock %}
