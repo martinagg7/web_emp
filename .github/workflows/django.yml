@@ -31,5 +31,5 @@ jobs:
 
     - name: Run Tests
       run: |
-        cd webpersonal  # Cambia a la carpeta de tu proyecto Django
+        cd webempresarial  # Cambia a la carpeta de tu proyecto Django
         python manage.py test  # Ejecuta los tests definidos en tu proyecto
