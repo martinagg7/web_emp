@@ -3,4 +3,4 @@ from .forms import ContactForm  # Asegúrate de tener este formulario definido e
 
 def contact(request):
     contact_form = ContactForm()
-    return render(request, 'core/contact.html', {'form': contact_form})
+    return render(request, 'contact/contact.html', {'form': contact_form})
