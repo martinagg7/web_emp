@@ -1,8 +1,7 @@
 {% extends 'core/base.html' %}
-
 {% load static %}
 
-{% block title %}{{ category }}{% endblock %}
+{% block title %}{{ category.name }}{% endblock %}
 
 {% block content %}
 {% for post in posts %}
@@ -20,18 +19,13 @@
             </span>
           </h2>
           <p class="mb-0">
-            <img class="mx-auto d-flex img-fluid mb-3 mb-lg-0" 
-                 src="{{ post.image.url }}" alt="Imagen de {{ post.title }}">
-          </p>
-          <p class="mb-0 mbt">
+            <img class="mx-auto d-flex img-fluid mb-3 mb-lg-0" src="{{ post.image.url }}" alt="{{ post.title }}">
             <em><b>{{ post.author }}</b></em>
           </p>
-          <p class="mb-0 mbt">
-            {{ post.content }}
-          </p>
+          <p class="mb-0 mbt">{{ post.content }}</p>
           <p class="mb-0 mbt">
             <span class="section-heading-under">
-              Publicado por <em><b>{{ post.author }}</b></em> en
+              Publicado por <em><b>{{ post.author }}</b></em> en 
               {% for category in post.categories.all %}
                 <a href="{% url 'category' category.id %}" class="link">
                   {{ category.name }}
