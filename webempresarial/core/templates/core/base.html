@@ -13,6 +13,8 @@
 
     <!-- Bootstrap -->
     <link href="{% static 'core/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
 
     <!-- Fuentes -->
     <link href="{% static 'core/vendor/font-awesome/css/fontawesome.min.css' %}" rel="stylesheet" type="text/css">
@@ -64,6 +66,32 @@
 
     <!-- Pié de página -->
     <footer class="footer text-faded text-center py-5">
+        <p class="m-0">
+            {% if LINK_TWITTER %}
+            <a href="{{ LINK_TWITTER }}" class="link" target="_blank">
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+            </a>
+            {% endif %}
+            {% if LINK_FACEBOOK %}
+            <a href="{{ LINK_FACEBOOK }}" class="link" target="_blank">
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-facebook fa-stack-1x fa-inverse"></i>
+                </span>
+            </a>
+            {% endif %}
+            {% if LINK_INSTAGRAM %}
+            <a href="{{ LINK_INSTAGRAM }}" class="link" target="_blank">
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                </span>
+            </a>
+            {% endif %}
+        </p>
         <div class="container">
             <p class="m-0">© La Caffettiera 2018</p>
         </div>
