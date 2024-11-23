@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'pages.apps.PagesConfig',
     'ckeditor',
     'ckeditor_uploader',
+    'contact',
 ]
 #ckeditor
 MEDIA_URL = '/media/'
