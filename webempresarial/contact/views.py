@@ -1,5 +1,6 @@
-from django.shortcuts import render,request
+from django.shortcuts import render
+from .forms import ContactForm  # Asegúrate de tener este formulario definido en forms.py
 
-# Create your views here.
 def contact(request):
-    return render(request, "core/contact.html")
+    contact_form = ContactForm()
+    return render(request, 'core/contact.html', {'form': contact_form})
