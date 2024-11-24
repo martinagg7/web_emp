@@ -18,9 +18,13 @@
             </h2>
 
             <!-- Mensaje de éxito si se redirige con el parámetro 'ok' -->
-            {% if 'ok' in request.GET %}
-              <p>Su mensaje se ha enviado correctamente, en breve nos pondremos en contacto.</p>
-            {% endif %}
+          {% if 'ok' in request.GET %}
+            <p>Su mensaje se ha enviado correctamente, en breve nos pondremos en contacto.</p>
+          {% endif %}
+          
+          {% if 'fail' in request.GET %}
+            <p class="text-danger">Error enviando el formulario, por favor, prueba más tarde.</p>
+          {% endif %}
 
             <!-- Formulario de contacto -->
             <form action="" method="POST">
@@ -41,7 +45,7 @@
                 {{ form.content.errors }}
               </div>
               <div class="text-center">
-                <input type="submit" class="btn btn-primary btn-block py-2" value="Enviar">
+                <input type="submit" class="btn btn-primary btn-block py-2" value="Enviar" >
               </div>
             </form>
 

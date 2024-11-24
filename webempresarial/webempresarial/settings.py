@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
-
+import json  
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -154,3 +154,12 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 #config media
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+
+
+# EMAIL SETTINGS
+EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+EMAIL_HOST_USER = '112fd567f5cafd'
+EMAIL_HOST_PASSWORD = 'a9f7d6b585bb41'
+EMAIL_PORT = '2525'
