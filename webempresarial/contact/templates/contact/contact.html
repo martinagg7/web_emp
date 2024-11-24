@@ -18,23 +18,32 @@
             </h2>
 
             <!-- Mensaje de éxito si se redirige con el parámetro 'ok' -->
-            {% if request.GET.ok %}
-              <div class="alert alert-success" role="alert">
-                ¡Su mensaje se ha enviado correctamente!
-              </div>
+            {% if 'ok' in request.GET %}
+              <p>Su mensaje se ha enviado correctamente, en breve nos pondremos en contacto.</p>
             {% endif %}
 
             <!-- Formulario de contacto -->
             <form action="" method="POST">
               {% csrf_token %}
-              <table>
-                {{ form.as_table }}
-              </table>
-              <input type="submit" value="Enviar">
+              <div class="form-group">
+                <label>Nombre *</label>
+                <div class="input-group">{{ form.name }}</div>
+                {{ form.name.errors }}
+              </div>
+              <div class="form-group">
+                <label>Email *</label>
+                <div class="input-group">{{ form.email }}</div>
+                {{ form.email.errors }}
+              </div>
+              <div class="form-group">
+                <label>Mensaje *</label>
+                <div class="input-group">{{ form.content }}</div>
+                {{ form.content.errors }}
+              </div>
+              <div class="text-center">
+                <input type="submit" class="btn btn-primary btn-block py-2" value="Enviar">
+              </div>
             </form>
-            
-            <!-- Mostrar los datos POST (solo para debug) -->
-            {{ request.POST }}
 
           </div>
         </div>
