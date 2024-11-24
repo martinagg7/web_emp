@@ -16,14 +16,26 @@
               <span class="section-heading-upper">Envíanos tus dudas</span>
               <span class="section-heading-lower">Contacto</span>
             </h2>
-            <!-- Formulario de contacto dinámico -->
-            <form method="post" action=".">
-              {% csrf_token %}
-              {{ form.as_p }}
-              <div class="text-center">
-                <input type="submit" class="btn btn-primary btn-block py-2" value="Enviar">
+
+            <!-- Mensaje de éxito si se redirige con el parámetro 'ok' -->
+            {% if request.GET.ok %}
+              <div class="alert alert-success" role="alert">
+                ¡Su mensaje se ha enviado correctamente!
               </div>
+            {% endif %}
+
+            <!-- Formulario de contacto -->
+            <form action="" method="POST">
+              {% csrf_token %}
+              <table>
+                {{ form.as_table }}
+              </table>
+              <input type="submit" value="Enviar">
             </form>
+            
+            <!-- Mostrar los datos POST (solo para debug) -->
+            {{ request.POST }}
+
           </div>
         </div>
       </div>
