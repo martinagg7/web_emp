@@ -27,7 +27,7 @@
               Publicado por <em><b>{{ post.author }}</b></em> en 
               {% for category in post.categories.all %}
                 <a href="{% url 'category' category.id %}" class="link">
-                  {{ category.name }}
+        
                 </a>{% if not forloop.last %}, {% endif %}
               {% endfor %}
             </span>

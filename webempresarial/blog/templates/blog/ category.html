@@ -1,36 +1,39 @@
 {% extends 'core/base.html' %}
 {% load static %}
 
-{% block title %}Categoría: {{ category.name }}{% endblock %}
+{% block title %}{{ category.name }}{% endblock %}
 
 {% block content %}
 <section class="page-section cta">
-  <div class="container">
-    <h1 class="my-5 text-center">Posts en la categoría "{{ category.name }}"</h1>
-    {% for post in posts %}
-    <div class="row">
-      <div class="col-xl-9 mx-auto">
-        <div class="cta-inner text-center rounded">
-          <h2 class="section-heading mb-5">
-            <span class="section-heading-upper">{{ post.published|date:"d/m/Y" }}</span>
-            <span class="section-heading-lower">{{ post.title }}</span>
-          </h2>
-          {% if post.image %}
-          <p class="mb-0">
-            <img class="mx-auto d-flex img-fluid mb-3 mb-lg-0" src="{{ post.image.url }}" alt="Imagen de {{ post.title }}">
-          </p>
-          {% endif %}
-          <p class="mb-0">{{ post.content|truncatewords:50 }}</p>
-          <p class="mb-0">
-            Publicado por <strong>{{ post.author }}</strong>
-          </p>
+    <div class="container">
+        <h1 class="my-5 text-center">Posts en la categoría "{{ category.name }}"</h1>
+        {% for post in category.get_posts.all %}
+        <div class="row">
+            <div class="col-xl-9 mx-auto">
+                <div class="cta-inner text-center rounded">
+                    <h2 class="section-heading mb-5">
+                        <span class="section-heading-upper">{{ post.published|date:"d/m/Y" }}</span>
+                        <span class="section-heading-lower">{{ post.title }}</span>
+                    </h2>
+                    <p class="mb-0">
+                        {% if post.image %}
+                        <img class="mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="{{ post.image.url }}" alt="Imagen de {{ post.title }}">
+                        {% endif %}
+                    </p>
+                    <p class="mb-0 mbt">{{ post.content|truncatewords:50 }}</p>
+                    <p class="mb-0 mbt">
+                        Publicado por <strong>{{ post.author }}</strong> en
+                        {% for category in post.categories.all %}
+                            <a href="{% url 'category' category.id %}" class="link">{{ category.name }}</a>{% if not forloop.last %},{% endif %}
+                        {% endfor %}
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
+        <hr>
+        {% empty %}
+        <p class="text-center">No hay posts en esta categoría.</p>
+        {% endfor %}
     </div>
-    <hr>
-    {% empty %}
-    <p class="text-center">No hay posts en esta categoría.</p>
-    {% endfor %}
-  </div>
 </section>
 {% endblock %}
